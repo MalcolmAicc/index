@@ -1,0 +1,91 @@
+.slidebox{
+    position: absolute;
+    width: 1200px;
+    height: 400px;
+    z-index: 99;
+}
+/* 定义一个列表将图片放入中间 */
+ul.slide{
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+}
+
+li.slide{
+    width: inherit;
+    height: inherit;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: .5s transform ease-in-out;
+}
+/* 将三张图片横向并排排列 */
+.slide:nth-of-type(1){
+    background:url(../img/slide-1.png) ;
+}
+
+.slide:nth-of-type(2){
+    background: url(../img/slide-2.png);
+    left: 100%;
+}
+
+.slide:nth-of-type(3){
+    background: url(../img/slide-3.png);
+    left: 200%;
+}
+
+input[type="radio"]{
+    position: relative;
+    z-index: 99;
+    display: none;
+}
+
+.controls-visvable{
+    position: absolute;
+    width: 100%;
+    left: 1100px;
+    bottom: 12px;
+}
+
+.controls-visvable label{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    margin: 0 3px;
+    border: white 2px solid;
+}
+/* d定义使切换时按钮的背景颜色变色，找到对应的radio */
+.slide input[type="radio"]:nth-of-type(1):checked ~ 
+.controls-visvable label:nth-of-type(1){
+    background-color: #005699;
+}
+
+.slide input[type="radio"]:nth-of-type(2):checked ~ 
+.controls-visvable label:nth-of-type(2){
+    background-color: #005699;
+}
+
+.slide input[type="radio"]:nth-of-type(3):checked ~ 
+.controls-visvable label:nth-of-type(3){
+    background-color: #005699;
+}
+/* 定义使点击轮播图的底部按钮时，使排列的三张图片向左移动相应的距离 */
+.slide input[type="radio"]:nth-of-type(1):checked ~ .slide{
+    transform: translateX(0%);
+}
+
+.slide input[type="radio"]:nth-of-type(2):checked ~ .slide{
+    transform: translateX(-100%);
+}
+
+.slide input[type="radio"]:nth-of-type(3):checked ~ .slide{
+    transform: translateX(-200%);
+}
